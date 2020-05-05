@@ -1,0 +1,50 @@
+<!doctype html>
+<html ng-app="demo" ng-controller="doctorsCtrl">
+<head>
+<title>Doctors - Heal Yourself</title>
+<link rel="stylesheet" href="w3.css">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+
+<div class="w3-container">
+
+<h3>Doctors</h3>
+
+<table class="w3-table w3-bordered w3-striped">
+  <tr>
+    <th>Edit</th>
+    <th>RollNo</th>
+    <th>Name</th>
+    <th>Surname</th>
+  </tr>
+  <tr ng-repeat="Doctor in Doctors">
+    <td>
+      <button class="w3-btn w3-ripple" ng-click="editUser(Doctors.indexOf(Doctor))">&#9998; Edit</button>
+    </td>
+    <td>{{ Doctor.rollNo }}</td>
+    <td>{{ Doctor.name }}</td>
+    <td>{{ Doctor.surname }}</td>
+  </tr>
+</table>
+<br>
+<button class="w3-btn w3-green w3-ripple" ng-click="editUser('new')">&#9998; Create New Doctor</button>
+
+<form ng-hide="hideform">
+  <h3 ng-show="edit">Create New Doctor:</h3>
+  <h3 ng-hide="edit">Edit Doctor:</h3>
+    <label>Name:</label>
+    <input class="w3-input w3-border" type="text" ng-model="name" ng-disabled="!edit" placeholder="Name">
+  <br>
+    <label>Surname:</label>
+    <input class="w3-input w3-border" type="text" ng-model="surname" ng-disabled="!edit" placeholder="Surname">
+<button class="w3-btn w3-green w3-ripple" ng-click="saveStudent()" ng-disabled="error || incomplete">&#10004; Save Changes</button>
+</form>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="doctorsDemo.js"></script>
+
+</body>
+</html> 
